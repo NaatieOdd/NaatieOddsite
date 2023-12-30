@@ -20,7 +20,7 @@
 
                 <div><label for="description">Description: </label> {{$schematic->description}}</div>
 
-                <div><label for="creator">{{$schematics->creator}}</label></div>
+                <div><label for="creator">{{$schematic->creator}}</label></div>
 
                 <div>
                     <a href="{{route('schematics.show', $schematic->id)}}">Show Schematic</a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schematic;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSchematicRequest;
 use App\Http\Requests\UpdateSchematicRequest;
@@ -40,7 +41,7 @@ class SchematicController extends Controller
             'title' => 'bail|required|unique:schematics|max:30',
             'description' => 'bail|required|max:255',
             'creator' => 'bail|required|max: 30',
-            'file' => 'required|file|mimes:schematic|max:1000000',
+            'file' => 'required' , 'file','extension:schematic', ' max:1000000',
         ]);
 
         $schematic = new schematic;
