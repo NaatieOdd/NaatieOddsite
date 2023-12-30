@@ -14,8 +14,7 @@
         <label for="creator">Creator:</label>
         <input type="text" id="creator" name="creator"><br>
         <label for="file">File</label>
-        <input id="file" type="file" name="file"/>
-        <button id="file" name="file">Upload</button><br>
+        <input id="file" type="file" name="file"/><br>
         <input type="submit">
     </form>
     @if ($errors->any())
