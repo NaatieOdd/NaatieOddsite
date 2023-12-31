@@ -6,17 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('schematics', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->String('title');
-            $table->LongText('description');
-            $table->String('creator');
+            $table->string('title');
+            $table->longText('description');
+            $table->string('creator');
+            $table->string('file')->nullable();
         });
     }
 

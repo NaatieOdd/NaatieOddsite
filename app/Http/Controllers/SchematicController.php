@@ -44,17 +44,22 @@ class SchematicController extends Controller
             'file' => 'required' , 'file','extension:schematic', ' max:1000000',
         ]);
 
-        $schematic = new schematic;
+        $schematic = new Schematic; // Assuming "Schematic" is your model name
         $schematic->title = $request->title;
         $schematic->description = $request->description;
         $schematic->creator = $request->creator;
-        $file = $request->file;
-
-        $filename= $request->title . ".schematic";
-
-        Storage::disk('public')->put("$filename", $file);
 
         $schematic->save();
+
+        $id = $schematic->id;
+
+        $filename = $id . ".schematic";
+
+        $request->file('file')->storeAs('public', $filename);
+
+        $schematic->file = $filename;
+        $schematic->save();
+
 
         return redirect('schematics');
 
@@ -111,10 +116,5 @@ class SchematicController extends Controller
         return redirect()->route('schematics.index');
     }
 
-    public function download($id)
-    {
 
-
-        return Storage::download('download.schematic', );
-    }
 }
