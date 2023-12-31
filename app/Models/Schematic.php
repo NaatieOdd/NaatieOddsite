@@ -20,5 +20,13 @@ class Schematic extends Model
         // Assuming your files are stored in the public disk
         return asset('storage/' . $this->file);
     }
+
+    public function scopeSearch($query, $keyword)
+    {
+        return $query->where('title', 'like', '%' . $keyword . '%')
+            ->orWhere('description', 'like', '%' . $keyword . '%')
+            ->orWhere('creator', 'like', '%' . $keyword . '%');
+    }
+
 }
 

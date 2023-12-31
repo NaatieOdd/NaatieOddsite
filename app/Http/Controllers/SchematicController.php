@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateSchematicRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Http\Request;
 
 class SchematicController extends Controller
 {
@@ -122,6 +123,14 @@ class SchematicController extends Controller
         $filePath = storage_path("app/public/{$schematic->file}");
 
         return response()->download($filePath, $schematic->file);
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword', '');
+        $schematics = Schematic::search($keyword)->get();
+
+        return view('schematics.search', compact('schematics', 'keyword'));
     }
 
 }

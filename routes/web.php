@@ -18,5 +18,7 @@ Route::get('/', function () {
     return view('home.index');
 });
 
+Route::get('/schematics/search', [SchematicController::class, 'search'])->name('schematics.search');
 Route::resource('schematics', SchematicController::class);
 Route::get('schematics/{id}/download', [SchematicController::class, 'downloadFile'])->name('schematics.download');
+

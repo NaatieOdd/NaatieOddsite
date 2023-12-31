@@ -10,6 +10,10 @@
         <div>
             <button onclick="window.location='{{route('schematics.create')}}'">Create Schematic
             </button>
+            <form action="{{ route('schematics.search') }}" method="get">
+                <input type="text" name="keyword" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
         </div>
         <br>
         @foreach($schematics as $schematic)
