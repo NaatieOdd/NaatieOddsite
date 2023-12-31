@@ -13,7 +13,7 @@
         </div>
         <br>
         @foreach($schematics as $schematic)
-            <div class="schematics">
+            <div class="schematic">
 
                 <div><label for="title">Title: </label>{{$schematic->title}}</div>
 

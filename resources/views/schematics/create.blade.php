@@ -5,6 +5,7 @@
 @section('schematics', 'active')
 
 @section('content')
+    <div class="create">
     <form action="{{route('schematics.store')}}" method="post" name="schematics" enctype="multipart/form-data">
         @csrf
         <label for="title">Schematic title:</label>
@@ -26,5 +27,7 @@
             </ul>
         </div>
     @endif
+
+    </div>
 
 @endsection

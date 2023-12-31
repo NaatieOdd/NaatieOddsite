@@ -26,6 +26,7 @@
     </div>
 </header>
 <main>
+    <!--Background image captured by Saantie-->
     <div class="text">
         @yield('content')
     </div>

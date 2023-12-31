@@ -110,6 +110,19 @@ a {
     color: lightseagreen;
 }
 
+.schematics {
+    justify-content: space-between;
+}
+
+.schematic {
+    justify-content: space-between;
+    background-color: #03040d;
+    width: 400px;
+    padding: 10px;
+    border: solid #1a202c;
+}
+
+
 .socials {
     display: flex;
     flex-direction: row;
