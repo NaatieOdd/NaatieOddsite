@@ -8,31 +8,24 @@
     <div class="schematics">
         <h1>All schematics</h1>
         <div>
-            <a href="{{route('schematics.create')}}">Create Schematic</a>
+            <button onclick="window.location='{{route('schematics.create')}}'">Create Schematic
+            </button>
         </div>
         <br>
         @foreach($schematics as $schematic)
             <div class="schematics">
 
-                <div><label for="id">ID:</label>{{$schematic->id}}</div>
-
                 <div><label for="title">Title: </label>{{$schematic->title}}</div>
 
-                <div><label for="description">Description: </label> {{$schematic->description}}</div>
+                <div><label for="description">Description: {{$schematic->description}}</label></div>
 
-                <div><label for="creator">{{$schematic->creator}}</label></div>
+                <div><label for="creator">Creator: {{$schematic->creator}}</label></div>
 
                 <div>
-                    <a href="{{route('schematics.show', $schematic->id)}}">Show Schematic</a>
+                    <button onclick="window.location='{{ route('schematics.show', $schematic->id) }}'">Show Schematic
+                    </button>
                 </div>
-                <div class="links">
-                    <a href="{{route('schematics.edit', $schematic->id)}}">Edit</a>
-                </div>
-                <form action="{{route('schematics.destroy', $schematic->id)}}" method="post">
-                    @method("DELETE")
-                    @csrf
-                    <input type="submit" value="Delete">
-                </form>
+                <br>
             </div>
         @endforeach
     </div>

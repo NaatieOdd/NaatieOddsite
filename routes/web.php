@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::resource('schematics', SchematicController::class);
+Route::get('schematics/{id}/download', [SchematicController::class, 'downloadFile'])->name('schematics.download');

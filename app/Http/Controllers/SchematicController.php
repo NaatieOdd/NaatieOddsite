@@ -40,8 +40,8 @@ class SchematicController extends Controller
         $validated = $request->validate([
             'title' => 'bail|required|unique:schematics|max:30',
             'description' => 'bail|required|max:255',
-            'creator' => 'bail|required|max: 30',
-            'file' => 'required' , 'file','extension:schematic', ' max:1000000',
+            'creator' => 'bail|required|max:30',
+            'file' => 'required|file|mimes:gz|max:1000000',
         ]);
 
         $schematic = new Schematic; // Assuming "Schematic" is your model name
@@ -91,7 +91,7 @@ class SchematicController extends Controller
     {
         $validated = $request->validate([
             'title' => 'bail|required|unique:schematics|max: 30',
-            'description' =>'bail|required|unique:schematics|max: 255'
+            'description' => 'bail|required|unique:schematics|max: 255'
         ]);
 
         $schematic->title = $request->title;
@@ -116,5 +116,12 @@ class SchematicController extends Controller
         return redirect()->route('schematics.index');
     }
 
+    public function downloadFile($id)
+    {
+        $schematic = Schematic::findOrFail($id);
+        $filePath = storage_path("app/public/{$schematic->file}");
+
+        return response()->download($filePath, $schematic->file);
+    }
 
 }
