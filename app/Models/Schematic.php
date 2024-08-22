@@ -25,8 +25,7 @@ class Schematic extends Model
     public function scopeSearch($query, $keyword)
     {
         return $query->where('title', 'like', '%' . $keyword . '%')
-            ->orWhere('description', 'like', '%' . $keyword . '%')
-            ->orWhere('creator', 'like', '%' . $keyword . '%');
+            ->orWhere('description', 'like', '%' . $keyword . '%');
     }
 
     public function user(): BelongsTo
