@@ -15,12 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('home.index');});
-Route::get('/home', function () {return view('home.index');});
-Route::get('/schematics/search', [SchematicController::class, 'search'])->name('schematics.search');
-Route::get('/schematics/{id}', [SchematicController::class, 'show'])->name('schematics.show');
-Route::resource('schematics', SchematicController::class);
-Route::get('schematics/{id}/download', [SchematicController::class, 'downloadFile'])->name('schematics.download');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/personal', [pagecontroller::class, 'personal'])->name('pages.personal');
@@ -28,3 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/schematics/create', [SchematicController::class, 'create'])->name('schematics.create');
 });
 
+Route::get('/', function () {return view('home.index');});
+Route::get('/home', function () {return view('home.index');});
+Route::get('/schematics/search', [SchematicController::class, 'search'])->name('schematics.search');
+Route::get('/schematics/{id}', [SchematicController::class, 'show'])->name('schematics.show');
+Route::resource('schematics', SchematicController::class);
+Route::get('schematics/{id}/download', [SchematicController::class, 'downloadFile'])->name('schematics.download');
