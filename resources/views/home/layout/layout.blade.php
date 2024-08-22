@@ -6,7 +6,7 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="description" content="Nathan Oddings portfolio">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>@yield('title')</title>
 </head>
@@ -37,7 +37,7 @@
     </div>
 </main>
 <footer>
-    <div class="copyright"><p><b>©</b>NaatieOdd 2023-2023</p></div>
+    <div class="copyright"><p><b>©</b>NaatieOdd 2023-2024</p></div>
 </footer>
 </body>
 </html>
