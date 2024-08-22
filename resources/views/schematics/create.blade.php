@@ -12,8 +12,7 @@
         <input type="text" id="title" name="title"><br>
         <label for="description">Description:</label>
         <input type="text" id="description" name="description"><br>
-        <label for="creator">Creator:</label>
-        <input type="text" id="creator" name="creator"><br>
+
         <label for="file">File</label>
         <input id="file" type="file" name="file"/><br>
         <input type="submit">

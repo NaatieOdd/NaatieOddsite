@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSchematicRequest;
 use App\Http\Requests\UpdateSchematicRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class SchematicController extends Controller
      */
     public function index()
     {
-        $schematics = schematic::all();
+        $schematics = Schematic::with('user')->get();
         return view('schematics.index', ['schematics' => $schematics]);
     }
 
@@ -41,14 +42,15 @@ class SchematicController extends Controller
         $validated = $request->validate([
             'title' => 'bail|required|unique:schematics|max:30',
             'description' => 'bail|required|max:255',
-            'creator' => 'bail|required|max:30',
             'file' => 'required|file|mimes:gz|max:1000000',
         ]);
 
-        $schematic = new Schematic; // Assuming "Schematic" is your model name
+        $userid = Auth::id();
+
+        $schematic = new Schematic;
         $schematic->title = $request->title;
         $schematic->description = $request->description;
-        $schematic->creator = $request->creator;
+        $schematic->user_id = $userid;
 
         $schematic->save();
 
@@ -108,14 +110,17 @@ class SchematicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Schematic $schematic)
     {
-        $schematic = schematic::find($id);
 
         $schematic->delete();
 
         return redirect()->route('schematics.index');
     }
+
+    /**
+     * Adds a way for users to download the schematic
+     */
 
     public function downloadFile($id)
     {
@@ -124,7 +129,9 @@ class SchematicController extends Controller
 
         return response()->download($filePath, $schematic->file);
     }
-
+    /**
+     * Adds a way for users to search for specific schematics
+     */
     public function search(Request $request)
     {
         $keyword = $request->input('keyword', '');
@@ -132,5 +139,9 @@ class SchematicController extends Controller
 
         return view('schematics.search', compact('schematics', 'keyword'));
     }
+
+
+
+
 
 }

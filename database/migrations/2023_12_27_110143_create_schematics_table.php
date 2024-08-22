@@ -14,7 +14,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->longText('description');
-            $table->string('creator');
+            $table->foreignId('user_id');
             $table->string('file')->nullable();
         });
     }

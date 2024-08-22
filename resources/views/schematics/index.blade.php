@@ -8,12 +8,17 @@
     <div class="schematics">
         <h1>All schematics</h1>
         <div>
-            <button onclick="window.location='{{route('schematics.create')}}'">Create Schematic
-            </button>
+
             <form action="{{ route('schematics.search') }}" method="get">
                 <input type="text" name="keyword" placeholder="Search...">
                 <button type="submit">Search</button>
+
             </form>
+
+            <div>
+                <button onclick="window.location='{{route('schematics.create')}}'">Create your own schematic</button>
+                <button onclick="window.location='{{route('pages.personal')}}'">See your own schematics</button>
+            </div>
         </div>
         <br>
         @foreach($schematics as $schematic)
@@ -23,10 +28,10 @@
 
                 <div><label for="description">Description: {{$schematic->description}}</label></div>
 
-                <div><label for="creator">Creator: {{$schematic->creator}}</label></div>
+                <div><label for="creator">Creator:{{ $schematic->user->name }}</label></div>
 
                 <div>
-                    <button onclick="window.location='{{ route('schematics.show', $schematic->id) }}'">Show Schematic
+                    <button onclick="window.location='{{ route('schematics.show', $schematic) }}'">Show Schematic
                     </button>
                 </div>
                 <br>

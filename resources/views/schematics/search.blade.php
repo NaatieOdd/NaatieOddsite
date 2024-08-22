@@ -17,7 +17,7 @@
 
                     <div><label for="description">Description: {{$schematic->description}}</label></div>
 
-                    <div><label for="creator">Creator: {{$schematic->creator}}</label></div>
+                    <div><label for="creator">Creator: {{$schematic->user->name}}</label></div>
 
                     <div>
                         <button onclick="window.location='{{ route('schematics.show', $schematic->id) }}'">Show Schematic
