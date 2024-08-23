@@ -21,8 +21,11 @@
     <div class="navbar">
         <div id="links">
             <div><a class="@yield('home')" href="/"><h4>Home</h4></a></div>
+            <div><a class="@yield('about')" href="/about"><h4>About</h4></a></div>
+            <div><a class="@yield('contact')" href="/contact"><h4>Contact</h4></a></div>
+            <div><a class="@yield('schematics')" href="{{route('schematics.index')}}"><h4>Schematic library</h4></a>
+            </div>
             <div><a class="@yield('login')" href="/login"><h4>Log in</h4></a></div>
-            <div><a class="@yield('schematics')" href="{{route('schematics.index')}}"><h4>Schematic library</h4></a></div>
         </div>
     </div>
 </header>
@@ -32,8 +35,9 @@
         @yield('content')
     </div>
     <div class="socials">
-        <a href="https://github.com/NaatieOdd"><img alt="github" src="{{ asset('pictures/github.png') }}"></a>
-        <a href="https://discord.com/users/343076557088096258"><img alt="discord" src="{{ asset('pictures/discord.png') }}"></a>
+        <a href="https://github.com/NaatieOdd/NaatieOddsite"><img alt="github" src="{{ asset('pictures/github.png') }}"></a>
+        <a href="https://discord.com/users/343076557088096258"><img alt="discord"
+                                                                    src="{{ asset('pictures/discord.png') }}"></a>
     </div>
 </main>
 <footer>

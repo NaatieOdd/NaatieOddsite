@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/schematics/create', [SchematicController::class, 'create'])->name('schematics.create');
 });
 
+Route::get('/about', [pagecontroller::class, 'about'])->name('pages.about');
+Route::get('/contact', [pagecontroller::class, 'contact'])->name('pages.contact');
 Route::get('/', function () {return view('home.index');});
 Route::get('/home', function () {return view('home.index');});
 Route::get('/schematics/search', [SchematicController::class, 'search'])->name('schematics.search');
