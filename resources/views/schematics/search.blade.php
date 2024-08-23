@@ -10,6 +10,7 @@
         <h1>Search Results</h1>
 
         @if ($schematics->count() > 0)
+            <div class="schematics-container">
             @foreach($schematics as $schematic)
                 <div class="schematic">
 
@@ -26,6 +27,7 @@
                     <br>
                 </div>
             @endforeach
+            </div>
         @else
             <p>No schematics found for the keyword "{{ $keyword }}".</p>
         @endif

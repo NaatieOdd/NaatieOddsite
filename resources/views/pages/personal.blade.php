@@ -6,9 +6,8 @@
 
 @section('content')
     <div class="schematics">
-        <h1>Schematics</h1>
-
-        <div class="schematics">
+        <h1>Your schematics:</h1>
+        <div class="schematics-container">
             @foreach($schematics as $schematic)
                 <div class="schematic">
                     <div>

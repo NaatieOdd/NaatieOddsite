@@ -21,14 +21,15 @@
             </div>
         </div>
         <br>
+        <div class="schematics-container">
         @foreach($schematics as $schematic)
             <div class="schematic">
 
-                <div><label for="title">Title: </label>{{$schematic->title}}</div>
+                <div><label for="title">Title: </label>{{$schematic->title}}</div><br>
 
-                <div><label for="description">Description: {{$schematic->description}}</label></div>
+                <div><label for="description">Description: {{$schematic->description}}</label></div><br>
 
-                <div><label for="creator">Creator:{{ $schematic->user->name }}</label></div>
+                <div><label for="creator">Creator: {{ $schematic->user->name }}</label></div><br>
 
                 <div>
                     <button onclick="window.location='{{ route('schematics.show', $schematic) }}'">Show Schematic
@@ -37,5 +38,6 @@
                 <br>
             </div>
         @endforeach
+        </div>
     </div>
 @endsection

@@ -111,15 +111,20 @@ a {
 }
 
 .schematics {
-    justify-content: space-between;
+ margin: 0;
 }
 
 .schematic {
-    justify-content: space-between;
     background-color: #03040d;
     width: 400px;
     padding: 10px;
     border: solid #1a202c;
+}
+
+.schematics-container {
+    max-height: 600px;
+    overflow-y: auto;
+    width: 460px;
 }
 
 
