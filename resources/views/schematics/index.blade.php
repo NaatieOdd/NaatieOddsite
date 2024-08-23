@@ -6,7 +6,8 @@
 
 @section('content')
     <div class="schematics">
-        <h1>All schematics</h1>
+        <h2>All schematics</h2>
+        <em><sup><h3>Total amount of schematics: {{ count($schematics) }}</h3></sup></em>
         <div>
 
             <form action="{{ route('schematics.search') }}" method="get">
