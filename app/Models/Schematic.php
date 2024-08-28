@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Schematic extends Model
@@ -24,8 +25,12 @@ class Schematic extends Model
     public function scopeSearch($query, $keyword)
     {
         return $query->where('title', 'like', '%' . $keyword . '%')
-            ->orWhere('description', 'like', '%' . $keyword . '%')
-            ->orWhere('creator', 'like', '%' . $keyword . '%');
+            ->orWhere('description', 'like', '%' . $keyword . '%');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

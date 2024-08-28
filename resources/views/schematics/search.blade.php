@@ -10,6 +10,7 @@
         <h1>Search Results</h1>
 
         @if ($schematics->count() > 0)
+            <div class="schematics-container">
             @foreach($schematics as $schematic)
                 <div class="schematic">
 
@@ -17,7 +18,7 @@
 
                     <div><label for="description">Description: {{$schematic->description}}</label></div>
 
-                    <div><label for="creator">Creator: {{$schematic->creator}}</label></div>
+                    <div><label for="creator">Creator: {{$schematic->user->name}}</label></div>
 
                     <div>
                         <button onclick="window.location='{{ route('schematics.show', $schematic->id) }}'">Show Schematic
@@ -26,6 +27,7 @@
                     <br>
                 </div>
             @endforeach
+            </div>
         @else
             <p>No schematics found for the keyword "{{ $keyword }}".</p>
         @endif
