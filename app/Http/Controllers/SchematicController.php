@@ -45,7 +45,7 @@ class SchematicController extends Controller
             'file' => 'required|file|mimes:gz|max:1000000',
         ]);
 
-        $schematic = new Schematic; // Assuming "Schematic" is your model name
+        $schematic = new Schematic;
         $schematic->title = $request->title;
         $schematic->description = $request->description;
         $schematic->creator = $request->creator;

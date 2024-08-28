@@ -79,13 +79,13 @@ a {
 
 }
 
-.active > h4 {
+.active > h2 {
     position: relative;
     line-height: 1.2em;
     font-weight: normal;
 }
 
-.active > h4:before {
+.active > h2:before {
     position: absolute;
     left: 0;
     top: 1.2em;
