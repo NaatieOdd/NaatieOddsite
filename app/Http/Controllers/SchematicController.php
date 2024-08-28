@@ -40,8 +40,8 @@ class SchematicController extends Controller
 
 
         $validated = $request->validate([
-            'title' => 'bail|required|unique:schematics|max:30',
-            'description' => 'bail|required|max:255',
+            'title' => 'bail|required|unique:schematics|profanity|max:30',
+            'description' => 'bail|required|profanity|max:255',
             'file' => 'required|file|mimes:gz|max:1000000',
         ]);
 
@@ -93,8 +93,8 @@ class SchematicController extends Controller
     public function update(UpdateSchematicRequest $request, Schematic $schematic): RedirectResponse
     {
         $validated = $request->validate([
-            'title' => 'bail|required|unique:schematics|max: 30',
-            'description' => 'bail|required|unique:schematics|max: 255'
+            'title' => 'bail|required|unique:schematics|profanity|max: 30',
+            'description' => 'bail|required|unique:schematics|profanity|max: 255'
         ]);
 
         $schematic->title = $request->title;

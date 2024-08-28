@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Schematic::class);
     }
+
+    public function comments(): Hasmany
+    {
+        return $this->hasmany(Comment::class);
+    }
+
 }
