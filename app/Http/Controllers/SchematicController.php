@@ -140,6 +140,60 @@ class SchematicController extends Controller
         return view('schematics.search', compact('schematics', 'keyword'));
     }
 
+    /**
+ * Show the form for bulk uploading schematics.
+ */
+public function bulkCreate()
+{
+    return view('schematics.bulk-create');
+}
+
+/**
+ * Handle bulk upload of schematics.
+ */
+public function bulkStore(Request $request): RedirectResponse
+{
+    // Validate the input
+    $validated = $request->validate([
+        'files.*' => 'required|file|mimes:gz|max:1000000', // Validate each file
+        'titles' => 'required|array|min:1',  // Ensure titles are provided as an array
+        'titles.*' => 'required|unique:schematics,title|profanity|max:30',  // Validate each title
+        'descriptions' => 'required|array|min:1',  // Ensure descriptions are provided as an array
+        'descriptions.*' => 'required|profanity|max:255',  // Validate each description
+    ]);
+
+    // Get the user ID of the authenticated user
+    $userId = Auth::id();
+
+    // Loop through each file and process it
+    foreach ($request->file('files') as $index => $file) {
+        // Get the title and description for the current file
+        $title = $request->titles[$index] ?? 'Untitled';  // Default title if not provided
+        $description = $request->descriptions[$index] ?? 'No description';  // Default description if not provided
+
+        // Create a new schematic record
+        $schematic = new Schematic();
+        $schematic->title = $title;
+        $schematic->description = $description;
+        $schematic->user_id = $userId;
+
+        // Save the schematic record to the database
+        $schematic->save();
+
+        // Generate the filename using the schematic ID
+        $filename = $schematic->id . ".schematic";
+
+        // Store the file with the generated filename
+        $file->storeAs('public', $filename);
+
+        // Save the filename in the database
+        $schematic->file = $filename;
+        $schematic->save();
+    }
+
+    // Redirect to the schematics index page with a success message
+    return redirect()->route('schematics.index')->with('success', 'Schematics uploaded successfully!');
+}
 
 
 
