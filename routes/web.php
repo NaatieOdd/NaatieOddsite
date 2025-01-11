@@ -24,7 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/schematics/create', [SchematicController::class, 'create'])->name('schematics.create');
     Route::get('schematics/bulk-create', [SchematicController::class, 'bulkCreate'])->name('schematics.bulk-create');
     Route::post('schematics/bulk-store', [SchematicController::class, 'bulkStore'])->name('schematics.bulk-store');
-    Route::resource('schematics', SchematicController::class);
 });
 
 Route::get('/about', [pagecontroller::class, 'about'])->name('pages.about');
@@ -38,3 +37,6 @@ Route::get('/schematics/{id}', [SchematicController::class, 'show'])->name('sche
 
 // Schematic Download Route
 Route::get('schematics/{id}/download', [SchematicController::class, 'downloadFile'])->name('schematics.download');
+
+//resource routes
+Route::resource('schematics', SchematicController::class);
