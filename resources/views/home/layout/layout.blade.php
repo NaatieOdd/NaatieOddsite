@@ -41,7 +41,7 @@
     </div>
 </main>
 <footer>
-    <div class="copyright"><p><b>©</b>NaatieOdd 2023-2024</p></div>
+    <div class="copyright"><p><b>©</b>NaatieOdd 2023-2025</p></div>
 </footer>
 </body>
 </html>
